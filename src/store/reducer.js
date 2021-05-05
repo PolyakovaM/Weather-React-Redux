@@ -65,13 +65,11 @@ export const getData = city => async dispatch => {
   const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric&lang=ru`
   const data = await fetch(url)
   if (data.ok) { 
-    console.log(data.ok)
     const result = await data.json()
     const img =  `http://openweathermap.org/img/wn/${result.weather[0].icon}@2x.png` 
     dispatch(citySearch(result, img))  
   } 
   else {
-    console.log(43543)
     dispatch(setSearchError(true))  
   }
 }
